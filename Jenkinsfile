@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         // Référentiels
-        FRONTEND_REPO = 'https://github.com/YassmineTriki/front-devops'
-        BACKEND_REPO = 'https://github.com/YassmineTriki/kaddemback'
+        FRONTEND_REPO = 'https://github.com/YassmineTriki/Devops-front.git'
+        BACKEND_REPO = 'https://github.com/YassmineTriki/kaddem.git'
         
         // Variables pour le monitoring
         PROMETHEUS_CONFIG = './monitoring/prometheus.yml'
