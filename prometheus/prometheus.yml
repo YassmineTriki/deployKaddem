@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  # Backend (Spring Boot)
+  - job_name: 'spring-boot-backend'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['backend:8072']  # Nom du service dans docker-compose
+
+  # Frontend (Node.js/React avec prom-client)
+  - job_name: 'frontend'
+    metrics_path: '/metrics'  # Par défaut pour prom-client
+    static_configs:
+      - targets: ['frontend:4200']  # Nom du service dans docker-compose
