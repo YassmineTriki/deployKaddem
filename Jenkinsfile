@@ -47,7 +47,7 @@ pipeline {
             steps {
                 // Vérification de la config Prometheus
                 sh '''
-                   docker run --rm -v /var/lib/jenkins/workspace/deploy/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus check config
+                   docker run --rm -v /var/lib/jenkins/workspace/deploy/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus check config --config.file=/etc/prometheus/prometheus.yml
                 '''
                 
                 // Lancement de l'infrastructure
