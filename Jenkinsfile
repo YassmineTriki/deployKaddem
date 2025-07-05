@@ -23,7 +23,7 @@ pipeline {
                 dir('monitoring') {
                     sh '''
                         mkdir -p grafana/dashboards
-                        curl -o prometheus.yml https://raw.githubusercontent.com/yasmine251/monitoring-infra/main/prometheus.yml
+                        curl -o prometheus.yml https://raw.githubusercontent.com/YassmineTriki/deployKaddem/master/prometheus/prometheus.yml
                     '''
                 }
             }
@@ -47,8 +47,7 @@ pipeline {
             steps {
                 // Vérification de la config Prometheus
                 sh '''
-                    docker run --rm -v "${PWD}/monitoring/prometheus.yml:/tmp/prometheus.yml" \
-                    prom/prometheus --config.file=/tmp/prometheus.yml --check-config
+                   docker run --rm -v /var/lib/jenkins/workspace/deploy/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus check config
                 '''
                 
                 // Lancement de l'infrastructure
